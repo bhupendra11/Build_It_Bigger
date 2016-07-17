@@ -10,6 +10,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/joketeller" />
+            <option value="$PROJECT_DIR$/joketellerandroidlib" />
           </set>
         </option>
       </GradleProjectSettings>
