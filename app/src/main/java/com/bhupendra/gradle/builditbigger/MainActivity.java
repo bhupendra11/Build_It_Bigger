@@ -17,17 +17,14 @@ import java.io.IOException;
 
 import bhupendrashekhawat.me.joketellerandroidlib.JokeActivity;
 
-
 public class MainActivity extends ActionBarActivity {
 
-    Context mContext;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.mContext =getApplicationContext();
         setContentView(R.layout.activity_main);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -53,46 +50,40 @@ public class MainActivity extends ActionBarActivity {
 
     public void tellJoke(View view){
 
-        new EndpointsAsyncTask().execute(mContext);
-        /*Joker joker = new Joker();
-        String joke =joker.getJoke();
-
-        Intent intent = new Intent(this, JokeActivity.class);
-        intent.putExtra("JOKE", joke);
-        startActivity(intent);
-*/
-        // Toast.makeText(this, joke, Toast.LENGTH_SHORT).show();
+        new GetJokesAsyncTask(
+                new GetJokesAsyncTask.Listener() {
+                    @Override
+                    public void onJokeLoaded(String joke) {
+                        Intent intent = new Intent(getApplicationContext(), JokeActivity.class);
+                        intent.putExtra(JokeActivity.JOKE_EXTRA, joke);
+                        startActivity(intent);
+                    }
+                }
+        ).execute();
     }
-
-    public void startJokeActivity(String joke){
-        Intent intent = new Intent(this, JokeActivity.class);
-        intent.putExtra("JOKE", joke);
-        startActivity(intent);
-    }
-
-
-
 }
 
-class EndpointsAsyncTask extends AsyncTask<Context, Void, String> {
+class GetJokesAsyncTask extends AsyncTask<Void, Void, String> {
     private static MyApi myApiService = null;
-    private Context mContext;
+    private Listener mListener;
 
+    public interface Listener{
+        void onJokeLoaded(String joke);
+    }
+
+    public GetJokesAsyncTask(Listener listener){
+        this.mListener = listener;
+    }
 
     @Override
-    protected String doInBackground(Context... params) {
-
-        mContext = params[0];
+    protected String doInBackground(Void... params) {
 
         if (myApiService == null) {  // Only do this once
             MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(), new AndroidJsonFactory(), null)
                     .setRootUrl("https://dotted-wind-137723.appspot.com/_ah/api/");
             // end options for devappserver
-
             myApiService = builder.build();
         }
-
-
         try {
             return myApiService.getJoke().execute().getData();
         } catch (IOException e) {
@@ -101,19 +92,10 @@ class EndpointsAsyncTask extends AsyncTask<Context, Void, String> {
 
     }
 
-
     @Override
     protected void onPostExecute(String joke) {
         // Toast.makeText(context, result, Toast.LENGTH_LONG).show();
-
-
-       Intent intent = new Intent(mContext, JokeActivity.class);
-        intent.putExtra("JOKE", joke);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        mContext.startActivity(intent);
-
-
-
+        mListener.onJokeLoaded(joke);
     }
 
 }

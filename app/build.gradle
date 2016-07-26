@@ -18,23 +18,43 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    productFlavors {
+        paid {
+            applicationId "com.udacity.gradle.builditbigger.paid"
+        }
+        free {
+            applicationId "com.udacity.gradle.builditbigger.free"
+        }
+    }
     dexOptions {
         javaMaxHeapSize "4g"
+    }
+
+    sourceSets {
+        paid {
+            java.srcDirs = ['src/paid/java', 'src/paid/java/com/bhupendra/gradle/builditbigger/']
+        }
+        free {
+            java.srcDirs = ['src/free/java', 'src/free/java/com/bhupendra/gradle/builditbigger/']
+        }
     }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     // Added for AdMob
+
     //Added joketeller java lib
     compile project(':joketeller')
 
     //Add android library for joke
     compile project(':joketellerandroidlib')
 
-    compile 'com.android.support:appcompat-v7:24.0.0-beta1'
-    compile 'com.google.android.gms:play-services:9.0.0'
-    compile 'com.google.code.findbugs:jsr305:2.0.1'
     compile project(path: ':backend', configuration: 'android-endpoints')
+    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile 'com.android.support:design:23.4.0'
+    compile 'com.google.android.gms:play-services:9.2.1'
+    compile 'com.google.code.findbugs:jsr305:2.0.1'
     compile 'com.android.support:multidex:1.0.0'
+    compile 'com.android.support:support-v4:23.4.0'
 }
