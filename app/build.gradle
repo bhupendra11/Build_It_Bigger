@@ -30,15 +30,7 @@ android {
         javaMaxHeapSize "4g"
     }
 
-    sourceSets {
-        paid {
-            java.srcDirs = ['src/paid/java', 'src/paid/java/com/bhupendra/gradle/builditbigger/']
-        }
-        free {
-            java.srcDirs = ['src/free/java', 'src/free/java/com/bhupendra/gradle/builditbigger/']
-        }
-    }
-}
+   }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
@@ -53,7 +45,7 @@ dependencies {
     compile project(path: ':backend', configuration: 'android-endpoints')
     compile 'com.android.support:appcompat-v7:23.4.0'
     compile 'com.android.support:design:23.4.0'
-    compile 'com.google.android.gms:play-services:9.2.1'
+    freeCompile 'com.google.android.gms:play-services:9.2.1'
     compile 'com.google.code.findbugs:jsr305:2.0.1'
     compile 'com.android.support:multidex:1.0.0'
     compile 'com.android.support:support-v4:23.4.0'

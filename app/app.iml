@@ -63,7 +63,6 @@
       <sourceFolder url="file://$MODULE_DIR$/src/free/assets" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/free/aidl" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/free/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/free/java/com/bhupendra/gradle/builditbigger" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/free/jni" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/free/rs" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/free/shaders" isTestSource="false" />
