@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "532869909324",
+    "firebase_url": "https://dotted-wind-137723.firebaseio.com",
+    "project_id": "dotted-wind-137723",
+    "storage_bucket": "dotted-wind-137723.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:532869909324:android:bbba88d4d07307a1",
+        "android_client_info": {
+          "package_name": "com.bhupendra.gradle.builditbigger.free"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "532869909324-rplqdb88ivh4f5psfb3nmsgmculh9ef3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXk-UL4MfXtt7fKf4NWXb_QaxgvRd5sdo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
